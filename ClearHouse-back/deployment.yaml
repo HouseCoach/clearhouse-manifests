@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-deployment
+  namespace: clearhouse
+  labels:
+    app: be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: be
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        app: be
+    spec:
+      containers:
+        - name: be
+          image: hech.kr.ncr.ntruss.com/clearhouse-back-image:latest # jar file 이미지
+          ports:
+            - containerPort: 32001 # BE pod이 리스닝하는 포트
+          env:
+            - name: DB_HOST_POSTGRES
+              value: postgres-service.clearhouse.svc.cluster.local
+            - name: DB_PORT_POSTGRES
+              value: "5432"
+            - name: DB_NAME_POSTGRES
+              value: clearhousedb
+            - name: DB_USER_POSTGRES
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials # 사용할 Secret의 이름
+                  key: user                 # Secret 안에서 가져올 데이터의 key
+            - name: DB_PASSWORD_POSTGRES
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: PW
+      imagePullSecrets:
+        - name: ncp-image-pull-secret
