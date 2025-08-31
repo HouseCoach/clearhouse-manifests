@@ -7,7 +7,7 @@ on:
         description: 'New image tag from CI'
         required: true
   push:
-    branches: [ "main", "hil679-github-action" ]
+    branches: [ "main", "github-action" ]
 
 jobs:
   update-manifest:
