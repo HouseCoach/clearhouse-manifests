@@ -39,4 +39,4 @@ spec:
                   name: postgres-credentials
                   key: PW
       imagePullSecrets:
-        - name: ncp-image-pull-secret
+        - name: dockerhub-pull-secret
