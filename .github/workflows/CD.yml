@@ -26,4 +26,5 @@ jobs:
           git config --global user.email 'hil679922@gmail.com'
           git add ClearHouse-back/deployment.yaml
           git commit -m "Update image to ${{ github.event.inputs.image_tag }}"
+          git pull --rebase
           git push
