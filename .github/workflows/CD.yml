@@ -6,8 +6,6 @@ on:
       image_tag:
         description: 'New image tag from CI'
         required: true
-  push:
-    branches: [ "main", "github-action" ]
 
 jobs:
   update-manifest:
