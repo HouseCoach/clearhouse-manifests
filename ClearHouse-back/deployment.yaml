@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: be
-          image: hech.kr.ncr.ntruss.com/clearhouse-back-image:latest # jar file 이미지
+          image: hyein02/clearhouse-back:a2811a2
           ports:
             - containerPort: 32001 # BE pod이 리스닝하는 포트
           env:
