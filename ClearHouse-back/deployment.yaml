@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: be
-          image: hyein02/clearhouse-back:752ac44
+          image: hyein02/clearhouse-back:a8c01c1
           ports:
             - containerPort: 32001 # BE pod이 리스닝하는 포트
           env:
